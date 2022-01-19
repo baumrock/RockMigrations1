@@ -13,7 +13,7 @@ class RockMigrations1 extends WireData implements Module {
   public static function getModuleInfo() {
     return [
       'title' => 'RockMigrations1',
-      'version' => '0.0.87',
+      'version' => '0.0.88',
       'summary' => 'Module to handle Migrations inside your Modules easily.',
       'autoload' => 1, // the new migrations module has priority (2)
       'singular' => true,

@@ -6,16 +6,16 @@
  * @license Licensed under MIT
  * @link https://www.baumrock.com
  */
-class RockMigrations extends WireData implements Module {
+class RockMigrations1 extends WireData implements Module {
 
   private $module;
 
   public static function getModuleInfo() {
     return [
-      'title' => 'RockMigrations',
-      'version' => '0.0.86',
+      'title' => 'RockMigrations1',
+      'version' => '0.0.87',
       'summary' => 'Module to handle Migrations inside your Modules easily.',
-      'autoload' => true,
+      'autoload' => 1, // the new migrations module has priority (2)
       'singular' => true,
       'icon' => 'bolt',
     ];
@@ -25,8 +25,9 @@ class RockMigrations extends WireData implements Module {
     // load the RockMigration Object Class
     require_once('RockMigration.class.php');
 
-    // set API variable
-    $this->wire('rockmigrations', $this);
+    // set API variable if new RockMigrations is not installed
+    if(!$this->wire->rockmigrations) $this->wire('rockmigrations', $this);
+    $this->wire('rockmigrations1', $this);
 
     // attach hooks
     $this->loadFilesOnDemand();
@@ -2746,7 +2747,4 @@ class RockMigrations extends WireData implements Module {
     return $config;
   }
 
-  public function __debugInfo() {
-    return [];
-  }
 }

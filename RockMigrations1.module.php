@@ -13,7 +13,7 @@ class RockMigrations1 extends WireData implements Module {
   public static function getModuleInfo() {
     return [
       'title' => 'RockMigrations1',
-      'version' => '0.0.88',
+      'version' => '0.0.89',
       'summary' => 'Module to handle Migrations inside your Modules easily.',
       'autoload' => 1, // the new migrations module has priority (2)
       'singular' => true,
@@ -558,7 +558,8 @@ class RockMigrations1 extends WireData implements Module {
    * @param mixed $object
    */
   public function setPageNameFromTitle($template) {
-    $template = $this->getTemplate($template);
+    $template = $this->getTemplate($template, false);
+    if(!$template) return;
     $tpl = "template=$template";
     $this->addHookAfter("Pages::saveReady($tpl,id>0)", function(HookEvent $event) {
       /** @var Page $page */

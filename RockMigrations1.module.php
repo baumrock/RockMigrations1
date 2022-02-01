@@ -550,6 +550,8 @@ class RockMigrations1 extends WireData implements Module {
   /**
    * Set page name from page title
    *
+   * DEPRECATED use RockTools instead!
+   *
    * Usage:
    * $rm->setPageNameFromTitle("basic-page");
    *

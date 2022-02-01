@@ -13,7 +13,7 @@ class RockMigrations1 extends WireData implements Module {
   public static function getModuleInfo() {
     return [
       'title' => 'RockMigrations1',
-      'version' => '0.0.89',
+      'version' => '0.0.90',
       'summary' => 'Module to handle Migrations inside your Modules easily.',
       'autoload' => 1, // the new migrations module has priority (2)
       'singular' => true,
@@ -572,6 +572,7 @@ class RockMigrations1 extends WireData implements Module {
           $new = $page->getLanguageValue($lang, "title");
           $new = $event->sanitizer->pageNameTranslate($new);
           if($new AND $old!=$new) {
+            $new = $event->wire->pages->names()->uniquePageName($new, $page);
             $page->set($prop, $new);
             $this->message($this->_("Page name updated to $new ($lang->name)"));
           }
@@ -581,6 +582,7 @@ class RockMigrations1 extends WireData implements Module {
         $old = $page->name;
         $new = $event->sanitizer->pageNameTranslate($page->title);
         if($new AND $old!=$new) {
+          $new = $event->wire->pages->names()->uniquePageName($new, $page);
           $page->name = $new;
           $this->message($this->_("Page name updated to $new"));
         }

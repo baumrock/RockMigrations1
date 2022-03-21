@@ -1,5 +1,13 @@
 # RockMigrations1
 
+## A message to Russian 🇷🇺 people
+
+If you currently live in Russia, please read [this message](https://github.com/Roave/SecurityAdvisories/blob/latest/ToRussianPeople.md).
+
+[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
+
+---
+
 This module can be used in parallel to RockMigrations (v2022) for backwards compatibility (in case you need some functionality that the 2022 version of RockMigrations does not provide).
 
 If you are using both modules, the `$rockmigrations` API variable will be the newer version of RM and you can access the old version via `$wire->rockmigrations1`.
